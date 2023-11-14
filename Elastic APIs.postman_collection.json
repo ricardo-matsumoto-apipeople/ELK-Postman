@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "895daf58-b7f1-465d-8aef-4f75fd7d7c6c",
+		"name": "Elastic APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24888866"
+	},
+	"item": [
+		{
+			"name": "Create Index",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-ndjson"
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{elastic-host}}/search-index-postman-enrichment",
+					"host": [
+						"{{elastic-host}}"
+					],
+					"path": [
+						"search-index-postman-enrichment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Index",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-ndjson"
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{elastic-host}}/search-index-postman-enrichment",
+					"host": [
+						"{{elastic-host}}"
+					],
+					"path": [
+						"search-index-postman-enrichment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"api.name\": \"api_test\",\n  \"additionalData\": {\n    \"numbers\": 12345,\n    \"string\": \"098765\",\n    \"boolean\": true\n  }\n}"
+				},
+				"url": {
+					"raw": "{{elastic-host}}/search-index-postman-enrichment/_doc/",
+					"host": [
+						"{{elastic-host}}"
+					],
+					"path": [
+						"search-index-postman-enrichment",
+						"_doc",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bulk Add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-ndjson"
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"index\": { \"_id\": \"1\"}}\n{\"id\": \"park_rocky-mountain-1\",    \"title\": \"Rocky Mountain 1\",    \"description\": \"1 Bisected north to south by the Continental Divide, this portion of the Rockies has ecosystems varying from over 150 riparian lakes to montane and subalpine forests to treeless alpine tundra. Wildlife including mule deer, bighorn sheep, black bears, and cougars inhabit its igneous mountains and glacial valleys. Longs Peak, a classic Colorado fourteener, and the scenic Bear Lake are popular destinations, as well as the historic Trail Ridge Road, which reaches an elevation of more than 12,000 feet (3,700 m).\",    \"nps_link\": \"https://www.nps.gov/romo/index.htm\",    \"states\": [        \"Colorado\"    ],    \"visitors\": 4517585,    \"world_heritage_site\": false,    \"location\": \"40.4,-105.58\",    \"acres\": 265795.2,    \"square_km\": 1075.6,    \"date_established\": \"1915-01-26T06:00:00Z\",    \"_extract_binary_content\": true,    \"_reduce_whitespace\": true,    \"_run_ml_inference\": true}\n{\"index\": { \"_id\": \"1\"}}\n{    \"id\": \"park_rocky-mountain-2\",    \"title\": \"Rocky Mountain 2\",    \"description\": \"2 Bisected north to south by the Continental Divide, this portion of the Rockies has ecosystems varying from over 150 riparian lakes to montane and subalpine forests to treeless alpine tundra. Wildlife including mule deer, bighorn sheep, black bears, and cougars inhabit its igneous mountains and glacial valleys. Longs Peak, a classic Colorado fourteener, and the scenic Bear Lake are popular destinations, as well as the historic Trail Ridge Road, which reaches an elevation of more than 12,000 feet (3,700 m).\",    \"nps_link\": \"https://www.nps.gov/romo/index.htm\",    \"states\": [        \"Colorado\"    ],    \"visitors\": 4517585,    \"world_heritage_site\": false,    \"location\": \"40.4,-105.58\",    \"acres\": 265795.2,    \"square_km\": 1075.6,    \"date_established\": \"1915-01-26T06:00:00Z\",    \"_extract_binary_content\": true,    \"_reduce_whitespace\": true,    \"_run_ml_inference\": true}\n"
+				},
+				"url": {
+					"raw": "{{elastic-host}}/search-index-postman-enrichment/_bulk",
+					"host": [
+						"{{elastic-host}}"
+					],
+					"path": [
+						"search-index-postman-enrichment",
+						"_bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-ndjson"
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"query\": {\n    \"match_all\": {}\n  }\n}"
+				},
+				"url": {
+					"raw": "{{elastic-host}}/search-policy-log/_delete_by_query",
+					"host": [
+						"{{elastic-host}}"
+					],
+					"path": [
+						"search-policy-log",
+						"_delete_by_query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Ingestion Pipeline",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"My new pipeline\",\n    \"processors\": [\n        {\n            \"gsub\": {\n                \"field\": \"message\",\n                \"pattern\": \"�\",\n                \"replacement\": \"\",\n                \"ignore_missing\": true,\n                \"if\": \"ctx?._extract_binary_content == true\",\n                \"tag\": \"remove_replacement_chars\",\n                \"on_failure\": [\n                    {\n                        \"append\": {\n                            \"field\": \"_ingestion_errors\",\n                            \"value\": [\n                                \"Processor 'gsub' with tag 'remove_replacement_chars' in pipeline '{{ _ingest.on_failure_pipeline }}' failed with message '{{ _ingest.on_failure_message }}'\"\n                            ]\n                        }\n                    }\n                ]\n            }\n        },\n        {\n            \"gsub\": {\n                \"field\": \"message\",\n                \"pattern\": \"\\\\s+\",\n                \"replacement\": \"\",\n                \"ignore_missing\": true,\n                \"if\": \"ctx?._reduce_whitespace == true\",\n                \"tag\": \"remove_extra_whitespace\",\n                \"on_failure\": [\n                    {\n                        \"append\": {\n                            \"field\": \"_ingestion_errors\",\n                            \"value\": [\n                                \"Processor 'gsub' with tag 'remove_extra_whitespace' in pipeline '{{ _ingest.on_failure_pipeline }}' failed with message '{{ _ingest.on_failure_message }}'\"\n                            ]\n                        }\n                    }\n                ]\n            }\n        },\n        {\n            \"trim\": {\n                \"field\": \"message\",\n                \"ignore_missing\": true,\n                \"if\": \"ctx?._reduce_whitespace == true\",\n                \"tag\": \"trim_whitespaces\",\n                \"on_failure\": [\n                    {\n                        \"append\": {\n                            \"field\": \"_ingestion_errors\",\n                            \"value\": [\n                                \"Record error information\\\",             \\\"field\\\": \\\"_ingestion_errors\\\",             \\\"value\\\": \\\"Processor 'trim' in pipeline '{{ _ingest.on_failure_pipeline }}' failed with message '{{ _ingest.on_failure_message }}'\"\n                            ]\n                        }\n                    }\n                ]\n            }\n        },\n        {\n            \"json\": {\n                \"field\": \"message\",\n                \"target_field\": \"muleMessageJson\",\n                \"tag\": \"jsonify_message_field\",\n                \"ignore_failure\": true,\n                \"on_failure\": [\n                    {\n                        \"append\": {\n                            \"field\": \"_ingestion_errors\",\n                            \"value\": [\n                                \"Processor 'JSON' in pipeline '{{ _ingest.on_failure_pipeline }}' failed with message '{{ _ingest.on_failure_message }}'\"\n                            ]\n                        }\n                    }\n                ]\n            }\n        },\n        {\n            \"json\": {\n                \"field\": \"muleMessageJson.content\",\n                \"target_field\": \"muleLog\",\n                \"if\": \"ctx.containsKey('muleMessageJson')\",\n                \"tag\": \"extract_and_jsonify_mule_log_message\",\n                \"on_failure\": [\n                    {\n                        \"append\": {\n                            \"field\": \"_ingestion_errors\",\n                            \"value\": [\n                                \"Processor 'JSON' in pipeline '{{ _ingest.on_failure_pipeline }}' failed with message '{{ _ingest.on_failure_message }}'\"\n                            ]\n                        }\n                    }\n                ]\n            }\n        },\n        {\n            \"rename\": {\n                \"field\": \"message\",\n                \"target_field\": \"muleMessage\",\n                \"ignore_missing\": true,\n                \"tag\": \"rename_message_field\"\n            }\n        },\n        {\n            \"remove\": {\n                \"field\": \"muleMessage\",\n                \"ignore_missing\": true,\n                \"if\": \"ctx.containsKey('muleMessageJson')\",\n                \"tag\": \"remove_text_message_field_if_object\"\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{elastic-host}}/_ingest/pipeline/my-new-pipeline",
+					"host": [
+						"{{elastic-host}}"
+					],
+					"path": [
+						"_ingest",
+						"pipeline",
+						"my-new-pipeline"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Ingestion Pipeline",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{elastic-host}}/_ingest/pipeline/my-new-pipeline",
+					"host": [
+						"{{elastic-host}}"
+					],
+					"path": [
+						"_ingest",
+						"pipeline",
+						"my-new-pipeline"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Enrichment Policy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{api-key}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"match\": {\n    \"indices\": \"search-index-postman-enrichment\",\n    \"match_field\": \"api.name\",\n    \"enrich_fields\": [\"additionalData.numbers\", \"additionalData.string\"]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{elastic-host}}/_enrich/policy/demo-enrichment-policy",
+					"host": [
+						"{{elastic-host}}"
+					],
+					"path": [
+						"_enrich",
+						"policy",
+						"demo-enrichment-policy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Enrichment Policy",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-ndjson"
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{elastic-host}}/_enrich/policy/demo-enrichment-policy/_execute",
+					"host": [
+						"{{elastic-host}}"
+					],
+					"path": [
+						"_enrich",
+						"policy",
+						"demo-enrichment-policy",
+						"_execute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Enrichment Policy",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-ndjson"
+					},
+					{
+						"key": "Authorization",
+						"value": "ApiKey {{api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{elastic-host}}/_enrich/policy/demo-enrichment-policy",
+					"host": [
+						"{{elastic-host}}"
+					],
+					"path": [
+						"_enrich",
+						"policy",
+						"demo-enrichment-policy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
